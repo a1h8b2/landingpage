@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Item Categories</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .category-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .category-button {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 10px;
+  }
+  .item-list {
+    list-style: none;
+    padding: 0;
+  }
+  .item {
+    background-color: #ffffff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="category-buttons">
+      <button class="category-button" data-category="all">All</button>
+      <button class="category-button" data-category="electronics">Electronics</button>
+      <button class="category-button" data-category="clothing">Clothing</button>
+      <button class="category-button" data-category="books">Books</button>
+    </div>
+    <ul class="item-list">
+      <li class="item" data-category="electronics">Smartphone</li>
+      <li class="item" data-category="clothing">T-shirt</li>
+      <li class="item" data-category="books">Novel</li>
+      <li class="item" data-category="electronics">Laptop</li>
+      <li class="item" data-category="clothing">Jeans</li>
+      <li class="item" data-category="books">Textbook</li>
+      <li class="item" data-category="electronics">Headphones</li>
+    </ul>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll('.category-button');
+    const items = document.querySelectorAll('.item');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const category = button.getAttribute('data-category');
+        items.forEach(item => {
+          item.style.display = 'none';
+          if (category === 'all' || item.getAttribute('data-category') === category) {
+            item.style.display = 'block';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
